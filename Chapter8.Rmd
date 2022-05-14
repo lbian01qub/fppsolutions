@@ -357,7 +357,16 @@ $\theta_1 = `r theta1`$ and $\theta_2 = `r theta2`$. It can be rewritten as:
 $$
  y_t = y_{t-1} + \varepsilon_t `r theta1`\varepsilon_{t-1} + `r theta2`\varepsilon_{t-2}.
 $$
-The last observation (on the log scale) is `r round(tail(log(wmurders),1),4)` and the last few residuals are `r round(tail(r, 3),4)`. So the next forecast is:
+```{r}
+R4logWM <- round(tail(log(wmurders),1),4)
+R4tailr <- round(tail(r, 3),4)
+```
+
+
+The last observation (on the log scale) is `r as.numeric(R4logWM)` and the last few residuals are `r as.numeric(R4tailr)`
+So the next forecast is:
+
+
 $$
   \hat{y}_{T+1|T} = `r round(tail(log(wmurders),1),4)` + 0 
     `r theta1` (`r round(tail(r,1),4)`) + 
